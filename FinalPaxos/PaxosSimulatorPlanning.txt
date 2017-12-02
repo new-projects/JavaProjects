@@ -1,0 +1,52 @@
+PostOffice
+	EventLog (File)
+	List<Connection> (to Participants)
+	List<Queue<Message>>
+	Time (int counter; the REAL time)
+
+Participant
+	// Paxos state (persistent)
+	EventLog (File)
+		Write line as: MessageId Decree
+	promisedNumber (int)
+	highestSeenNumber (int)
+	// Paxos-maintained state
+	LeaderId (int)
+	// volatile state
+	Inbox (Queue<Message>)
+	// housekeeping
+	Id (int)
+	reference to PostOffice
+	Clock (class)
+		keeps time as an interval
+		
+	// things a participant does:
+	// join
+	// resign
+	// enter
+	// leave (amnesia?)
+	// delay (interval)
+	// initiate proposal
+	// receive (interval)
+
+PaxosMessage
+	MessageId (int)
+	Quorum
+		ImmutableList<Integer> (participant ids)
+	Decree
+		value (String; used with OpaqueDecree)
+		DecreeType
+			OpaqueDecree
+			AddParticipant
+			RemoveParticipant
+			...?
+	Ballot
+		List<Integer> (participant ids)
+	
+CommandMessage (Enum)
+	Pause
+	Start
+	Enter
+	Leave
+	Show
+	Hide
