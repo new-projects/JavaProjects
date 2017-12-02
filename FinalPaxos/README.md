@@ -1,5 +1,5 @@
-#Copied from https://github.com/drewhannay/paxos
-#For study only
+Copied from https://github.com/drewhannay/paxos
+For study only
 
 Paxos Simulator
 =====
